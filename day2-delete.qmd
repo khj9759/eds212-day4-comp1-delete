@@ -39,5 +39,33 @@ my_matrix + matrixA
 # Matrix multiplication
 
 ```{r}
+cats <- matrix(data = c(0,4,3,1), nrow = 2, ncol = 2, byrow = TRUE)
+dogs <- matrix(data = c(6,-3,0,2), nrow = 2, ncol = 2, byrow = TRUE)
+```
 
+```{r}
+dogs %*% cats
+```
+
+## Leslie matrix example
+
+```{r}
+insect_leslie <- matrix(data = c(0, 0, 600, 0.2, 0, 0, 0, 0.08,0),
+                        nrow=3, 
+                        ncol=3, 
+                        byrow = TRUE)
+
+insect_y0 <- c(12000, 700, 500)
+```
+
+Find the population structure for each life stage at t = 1year:
+
+```{r}
+insect_y1 <- insect_leslie %*% insect_y0
+```
+
+Find the population structure at t = 2 years :
+
+```{r}
+insect_y2 <- insect_leslie %*% insect_y1
 ```
